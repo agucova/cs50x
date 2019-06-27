@@ -14,8 +14,6 @@ def substring_split(text, n):
 def lines(a, b):
     """Return lines in both a and b"""
     def splitter(file): return iter(file.splitlines())
-    la = splitter(a)
-    lb = splitter(b)
     lines = []
     for line_a in splitter(a):
         for line_b in splitter(b):

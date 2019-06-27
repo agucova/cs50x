@@ -1,0 +1,7 @@
+organization=agucova-github
+projectKey=agucova_cs50x
+serverUrl=https://sonarcloud.io
+serverVersion=7.9.0.26601
+dashboardUrl=https://sonarcloud.io/dashboard?id=agucova_cs50x
+ceTaskId=AWua2dRUuJu77ArqyNWl
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWua2dRUuJu77ArqyNWl
