@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form id="register" name="register" action="/register" method="post" onsubmit="checkUser()">
+        <div class="form-group">
+            <input autocomplete="off" id="username" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        <div class="valid-feedback">This username is available.</div>
+        <div class="invalid-feedback">This username is already taken.</div>
+        </div>
+        <div class="form-group">
+            <input id="password" class="form-control" name="password" placeholder="Password" type="password">
+            <div id="invalid-password" class="invalid-feedback">The password isn't strong enough.</div>
+            <div id="valid-password" class="valid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Confirmation" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <script>
+            // Get the input box
+        var textInput = document.getElementById('username');
+        var passwordField = document.getElementById('password');
+        var feedbackField = document.getElementById('invalid-password');
+        var suggestionField = document.getElementById('valid-password');
+        // Init a timeout variable to be used below
+        var timeout = null;
+        var timeoutP = null;
+        // Listen for keystroke events
+        textInput.onkeyup = function (e) {
+            clearTimeout(timeout);
+
+            // Make a new timeout set to go off in 800ms
+            timeout = setTimeout(function () {
+                $.getJSON("check?username=" + textInput.value, function(data) {
+                    var textInput = document.getElementById('username');
+                    var form = document.getElementById('register');
+                    if(data == false) {
+                        textInput.classList.remove("is-valid");
+                        textInput.classList.add("is-invalid");
+                    }
+                    else {
+                        textInput.classList.remove("is-invalid");
+                        textInput.classList.add("is-valid");
+                    }
+                });
+            }, 500);
+        };
+        // Listen for keystroke events
+        passwordField.onkeyup = function (e) {
+
+            clearTimeout(timeoutP);
+
+            // Make a new timeout set to go off in 800ms
+            timeoutP = setTimeout(function () {
+                var password = passwordField.value;
+                var result = zxcvbn(password);
+                if(result.score < 3) {
+                    passwordField.classList.remove("is-valid");
+                    passwordField.classList.add("is-invalid");
+                    if (result.feedback.warning) {
+                        feedbackField.innerHTML = result.feedback.warning;
+                    }
+                    else {
+                        feedbackField.innerHTML = "The password isn't strong enough.";
+                    }
+                }
+                else {
+                    passwordField.classList.remove("is-invalid");
+                    passwordField.classList.add("is-valid");
+                    if (result.feedback.suggestions) {
+                        suggestionField.innerHTML = result.feedback.suggestions;
+                    }
+                    else {
+                        suggestionField.innerHTML = "";
+                    }
+                }
+            }, 500);
+        };
+    </script>
+{% endblock %}

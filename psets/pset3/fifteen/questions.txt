@@ -1,0 +1,4 @@
+0. The game allows for a range of dimensions going from DIM_MIN to DIM_MAX, by default 3x3 and 9x9 respectively.
+1. Seemingly, two arrays, representing both dimensions in the table. (a.k.a multidimensional array).
+2. There is a function called greet() with the sole purpose of greeting the player with the game title.
+3. There are several functions missing: init(), draw(), move() and won().

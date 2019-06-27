@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form action="/compare" enctype="multipart/form-data" method="post">
+  <div class="form-row">
+
+    <div class="col form-group">
+      <label for="file1">File1</label>
+      <input type="file" class="form-control-file" id="file1" name="file1">
+    </div>
+
+    <div class="col form-group">
+      <label for="file1">File2</label>
+      <input type="file" class="form-control-file" id="file2" name="file2">
+    </div>
+  </div>
+  <div class="form-row">
+
+    <div class="col form-group">
+      <label class="mr-sm-2 my-1" for="algorithm">Algorithm</label><br>
+      <select class="custom-select mr-sm-2" id="algorithm" name="algorithm">
+        <option selected>Choose...</option>
+        <option value="lines">Lines</option>
+        <option value="sentences">Sentences</option>
+        <option value="substrings">Substrings</option>
+      </select>
+    </div>
+
+    <div class="col form-group">
+      <label class="mr-sm-2 my-1" for="n">Number</label>
+      <input type="number" min="1" step="1" class="form-control col-lg-2" id="length" value="length" name="length">
+    </div>
+  </div>
+  <div class="form-row">
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+{% endblock %}

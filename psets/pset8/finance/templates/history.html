@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<table class="table">
+   <thead>
+       <tr>
+           <th scope="col">#</th>
+            {% for k in history[0] %}
+                <th scope="col"> {{ k }} </th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in history %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                {% for key, v in row.items() %}
+                <td> {{ v }} </td>
+                {% endfor %}
+            </th>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
