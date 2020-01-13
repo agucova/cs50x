@@ -5,7 +5,6 @@
 The largest word in the dictionary, which gives us our length constant. More generally:
 > An invented long word said to mean a lung disease caused by inhaling very fine ash and sand dust.
 
-
 ## According to its man page, what does `getrusage` do?
 
 Collect runtime statistics for processes or thread:
@@ -22,7 +21,8 @@ Because that allows us to check if the pointer is empty, that is, if getrusage r
 ## Explain as precisely as possible, in a paragraph or more, how `main` goes about reading words from a file. In other words, convince us that you indeed understand how that function's `for` loop works.
 The program starts by opening the file in a read mode using `fopen` in a FILE* variable, which if successful continues to a for loop with three arguments:
 
->         for (int c = fgetc(file); c != EOF; c = fgetc(file))
+> for (int c = fgetc(file); c != EOF; c = fgetc(file))
+
 **fgetc()'s** man page describes:
 > **fgetc**() reads the next character from _stream_ and returns it as an _unsigned_ char cast to an _int_, or **EOF** on end of file or error.
 
