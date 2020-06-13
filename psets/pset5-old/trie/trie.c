@@ -2,8 +2,8 @@
 Title: Trie
 Description: Example of a trie implementation
 Author: Agustín Covarrubias
-WARNING: This source may have a lot of unnecesary comments.
 */
+
 #include <stdio.h>
 #include <cs50.h>
 #include <ctype.h>
@@ -32,10 +32,5 @@ int main(void) {
         }
         traverse = root;
     }
-    // for(int i = 0; i < 27; i++) {
-    //     if(root->children[i]) {
-
-    //     }
-    // }
 
 }
